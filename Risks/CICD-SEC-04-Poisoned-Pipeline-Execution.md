@@ -2,7 +2,7 @@
 ## Definition
 
 
-Poisoned Pipeline Execution (PPE) risks refer to the ability of an attacker with access to source control systems - and without access to the build environment, to manipulate the build process by injecting malicious code/commands into the build pipeline configuration, essentially ‘poisoning’ the pipeline and running malicious code as part of the build process.
+Poisoned Pipeline Execution (PPE) risks refer to the ability of an attacker with access to source control systems - and **without access to the build environment**, to manipulate the build process by injecting malicious code/commands into the build pipeline configuration, essentially ‘poisoning’ the pipeline and running malicious code as part of the build process.
 
 
 ## Description
@@ -17,7 +17,7 @@ Once able to execute malicious code within the CI pipeline, the attacker can con
 
 There are three types of PPE:
 
-**Direct PPE (D-PPE):** In a D-PPE scenario, the attacker modifies the CI config file in a repository they have access to, either by pushing the change directly to an unprotected remote branch on the repo, or by submitting a PR with the change from a branch or a fork. Since the CI pipeline execution is triggered off of the “push” or ”PR” events, and the pipeline execution is defined by the commands in the modified CI configuration file, the attacker’s malicious commands ultimately run in the build node once the build pipeline is triggered.
+**Direct PPE (D-PPE):** In a D-PPE scenario, the attacker modifies the CI config file **in a repository** they have access to, either by pushing the change directly to an unprotected remote branch on the repo, or by submitting a PR with the change from a branch or a fork. Since the CI pipeline execution is triggered off of the “push” or ”PR” events, and the pipeline execution is defined by the commands in the modified CI configuration file, the attacker’s malicious commands ultimately run in the build node once the build pipeline is triggered.
 
 **Indirect PPE (I-PPE):** In certain cases, the possibility of D-PPE is not available to an adversary with access to an SCM repository:
 
@@ -184,12 +184,12 @@ Preventing and mitigating the PPE attack vector involves multiple measures spann
 
 
 
-* Ensure that pipelines running unreviewed code are executed on isolated nodes, not exposed to secrets and sensitive environments.
-* Evaluate the need for triggering pipelines on public repositories from external contributors. Where possible, refrain from running pipelines originating from forks, and consider adding controls such as requiring manual approval for pipeline execution. 
-* For sensitive pipelines, for example those that are exposed to secrets, ensure that each branch that is configured to trigger a pipeline in the CI system has a correlating branch protection rule in the SCM.
-* To prevent the manipulation of the CI configuration file to run malicious code in the pipeline, each CI configuration file must be reviewed before the pipeline runs. Alternatively, the CI configuration file can be managed in a remote branch, separate from the branch containing the code being built in the pipeline. The remote branch should be configured as protected.
-* Remove permissions granted on the SCM repository from users that do not need them.
-* Each pipeline should only have access to the credentials it needs to fulfill its purpose. The credentials should have the minimum required privileges.
+* **CODEREVIEW** Ensure that pipelines running unreviewed code are executed on isolated nodes, not exposed to secrets and sensitive environments.
+* **CODEREVIEW** Evaluate the need for triggering pipelines on public repositories from external contributors. Where possible, refrain from running pipelines originating from forks, and consider adding controls such as requiring manual approval for pipeline execution. 
+* **CODEREVIEW, CODEOWNER, PROJECT SEPERATION AND BRIGHT** For sensitive pipelines, for example those that are exposed to secrets, ensure that each branch that is configured to trigger a pipeline in the CI system has a correlating branch protection rule in the SCM.
+* **CODEREVIEW, CODEOWNER, PROJECT SEPERATION, ADMINSTRATIVE PRIVILEGE** To prevent the manipulation of the CI configuration file to run malicious code in the pipeline, each CI configuration file must be reviewed before the pipeline runs. Alternatively, the CI configuration file can be managed in a remote branch, separate from the branch containing the code being built in the pipeline. The remote branch should be configured as protected.
+* **BRIGHT, CODEOWNER, PROJECT SEPERATION, ADMINSTRATIVE PRIVILEGE** Remove permissions granted on the SCM repository from users that do not need them.
+* **SBOX** Each pipeline should only have access to the credentials it needs to fulfill its purpose. The credentials should have the minimum required privileges.
 
 
 ## References

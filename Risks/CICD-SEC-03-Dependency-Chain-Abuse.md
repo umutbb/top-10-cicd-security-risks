@@ -39,19 +39,19 @@ That said, all recommended controls share the same guiding principles -
 
 
 
-* Any client pulling code packages should not be allowed to fetch packages directly from the internet or untrusted sources. Instead, the following controls should be implemented:
+* **ARTIFACT REPO** Any client pulling code packages should not be allowed to fetch packages directly from the internet or untrusted sources. Instead, the following controls should be implemented:
     * Whenever 3rd party packages are pulled from an external repository, ensure all packages are pulled through an internal proxy rather than directly from the internet. This allows deploying additional security controls at the proxy layer, as well as providing investigative capabilities around packages pulled - in case of a security incident. 
     * Where applicable, disallow pulling of packages directly from external repositories. Configure all clients to pull packages from internal repositories, containing pre-vetted packages, and establish a mechanism to verify and enforce this client configuration.
-* Enable checksum verification and signature verification for pulled packages. 
-* Avoid configuring clients to pull the latest version of a package. Prefer configuring a pre-vetted version or version ranges. Use the framework specific techniques to continuously “lock” the package version required in your organization to a stable and secure version.
-* Scopes:
+* **XRAY, ARTIFACT REPO** Enable checksum verification and signature verification for pulled packages. 
+* **CHECK** Avoid configuring clients to pull the latest version of a package. Prefer configuring a pre-vetted version or version ranges. Use the framework specific techniques to continuously “lock” the package version required in your organization to a stable and secure version.
+* **CHECK: STANDART?** Scopes:
     * Ensure all private packages are registered under the organization’s scope.
     * Ensure all code referencing a private package uses the package’s scope. 
     * Ensure clients are forced to fetch packages that are under your organization’s scope solely from your internal registry.
-* When installation scripts are being executed as part of the package installation, ensure that a separate context exists for those scripts, which does not have access to secrets and other sensitive resources available in other stages in the build process.
-* Ensure that internal projects always contain configuration files of package managers (for example .npmrc in NPM) within the code repository of the project, to override any insecure configuration potentially existing on a client fetching the package.
-* Avoid publishing names of internal projects in public repositories.
-* As a general rule, given the amount of package managers and configurations in use simultaneously, complete prevention of 3rd party chain abuse is far from trivial. It is therefore recommended to ensure that an appropriate level of focus is placed around detection, monitoring and mitigation to ensure that in case of an incident, it is identified as quickly as possible and has the minimal amount of potential damage. In this context, all relevant systems should be hardened properly according to the guidelines under the “CICD-SEC-7: Insecure System Configuration” risk.
+* **SBOX, GIT SECRET??** When installation scripts are being executed as part of the package installation, ensure that a separate context exists for those scripts, which does not have access to secrets and other sensitive resources available in other stages in the build process.
+* **LINT??** Ensure that internal projects always contain configuration files of package managers (for example .npmrc in NPM) within the code repository of the project, to override any insecure configuration potentially existing on a client fetching the package.
+* **DLP CODE DETECT** Avoid publishing names of internal projects in public repositories.
+* **XRAY, INCIDENT MANAGEMENT, ISOLATION** As a general rule, given the amount of package managers and configurations in use simultaneously, complete prevention of 3rd party chain abuse is far from trivial. It is therefore recommended to ensure that an appropriate level of focus is placed around detection, monitoring and mitigation to ensure that in case of an incident, it is identified as quickly as possible and has the minimal amount of potential damage. In this context, all relevant systems should be hardened properly according to the guidelines under the “CICD-SEC-7: Insecure System Configuration” risk.
 
 
 ## References

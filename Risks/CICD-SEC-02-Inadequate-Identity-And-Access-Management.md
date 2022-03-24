@@ -15,14 +15,14 @@ Some of the major concerns and challenges around identity and access management 
 
 
 
-* **Overly permissive identities** - Maintaining the principle of least privilege for both applicative and humac accounts. For example, in SCMs - Ensuring each human and applicative identity has been granted only the permissions required and only against the actual repositories it needs to access is not trivial.
-* **Stale identities** - Employees/Systems that are not active and/or no longer require access but have not had their human and programmatic account against all CI/CD systems deprovisioned.
-* **Local identities** - Systems which do not have their access federated with a centralized IDP, creating identities that are managed locally within the system in question. Local accounts create challenges in enforcing consistent security policies (e.g. password policy, lockout policy, MFA) as well as properly deprovisioning access across all systems (for example, when an employee leaves the organization).
-* **External identities** - 
+* **Overly permissive identities** - **BRIGHT, ACCESS REVIEW / ** Maintaining the principle of least privilege for both applicative and humac accounts. For example, in SCMs - Ensuring each human and applicative identity has been granted only the permissions required and only against the actual repositories it needs to access is not trivial.
+* **Stale identities** - **SBOX / ** Employees/Systems that are not active and/or no longer require access but have not had their human and programmatic account against all CI/CD systems deprovisioned.
+* **Local identities** - **Kullanıcı Yetilendirme / ** Systems which do not have their access federated with a centralized IDP, creating identities that are managed locally within the system in question. Local accounts create challenges in enforcing consistent security policies (e.g. password policy, lockout policy, MFA) as well as properly deprovisioning access across all systems (for example, when an employee leaves the organization).
+* **External identities** - **N/A / **
     * <span style="text-decoration:underline;">Employees registered with an email address from a domain not owned or managed by the organization</span> - In this scenario, the security of these accounts is highly dependent on the security of the external accounts they are assigned to. Since these accounts are not managed by the organization, they are not necessarily compliant with the organization's security policy. 
     * <span style="text-decoration:underline;">External collaborators</span> - Once access is granted to external collaborators to a system, the security level of the system is derived from the level of the external collaborator’s work environment, outside of the organization’s control.
-* **Self-registered identities** - In systems where self-registration is allowed, it is often the case that a valid domain address is the only prerequisite for self-registration and access to CI/CD systems. Usage of default/base set of permissions to a system which is anything different than “none” significantly expands the potential attack surface.
-* **Shared identities** - Identities shared between human users / applications / both humans and applications increase the footprint of their credentials as well as create challenges having to do with accountability in case of a potential investigation. 
+* **Self-registered identities** - **N/A / ** In systems where self-registration is allowed, it is often the case that a valid domain address is the only prerequisite for self-registration and access to CI/CD systems. Usage of default/base set of permissions to a system which is anything different than “none” significantly expands the potential attack surface.
+* **Shared identities** - ** CHECK : app user login and differance / ** Identities shared between human users / applications / both humans and applications increase the footprint of their credentials as well as create challenges having to do with accountability in case of a potential investigation. 
 
 
 ## Impact
@@ -35,14 +35,14 @@ The existence of hundreds (or sometimes thousands) of identities - both human an
 
 
 * Conduct a continuous analysis and mapping of all identities across all systems within the engineering ecosystem. For each identity, map the identity provider, level of permissions granted and level of permissions actually used. Ensure all methods of programmatic access are covered within the analysis.
-* Remove permissions not necessary for the ongoing work of each identity across the different systems in the environment.
-* Determine an acceptable period for disabling/removing stale accounts and disable/remove any identity which has surpassed the predetermined period of inactivity.
-* Avoid creating local user accounts. Instead, create and manage identities using a centralized organization component (IdP). Whenever local user accounts are in use, ensure that accounts which no longer require access are disabled/removed and that security policies around all existing accounts match the organization’s policies.
-* Continuously map all external collaborators and ensure their identities are aligned with the principle of least privilege. Whenever possible, grant permissions with a predetermined expiry date - for both human and programmatic accounts - and disable their account once the work is done.
-* Prevent employees from using their personal email addresses, or any address which belongs to a domain not owned and managed by the organization, against the SCM, CI, or any other CI/CD platform. Continuously monitor for non-domain addresses across the different systems and remove non-compliant users.
-* Refrain from allowing users to self-register to systems, and grant permission on an as-needed basis.
-* Refrain from granting base permissions in a system to all users, and to large groups where user accounts are automatically assigned to.
-* Avoid using shared accounts. Create dedicated accounts for each specific context, and grant the exact set of permissions required for the context in question.
+* **BRIGHT ACCESS REVIEW** Remove permissions not necessary for the ongoing work of each identity across the different systems in the environment.
+* **KY** Determine an acceptable period for disabling/removing stale accounts and disable/remove any identity which has surpassed the predetermined period of inactivity.
+* **KY** Avoid creating local user accounts. Instead, create and manage identities using a centralized organization component (IdP). Whenever local user accounts are in use, ensure that accounts which no longer require access are disabled/removed and that security policies around all existing accounts match the organization’s policies.
+* **N/A** Continuously map all external collaborators and ensure their identities are aligned with the principle of least privilege. Whenever possible, grant permissions with a predetermined expiry date - for both human and programmatic accounts - and disable their account once the work is done.
+* **PROXY** Prevent employees from using their personal email addresses, or any address which belongs to a domain not owned and managed by the organization, against the SCM, CI, or any other CI/CD platform. Continuously monitor for non-domain addresses across the different systems and remove non-compliant users.
+* **KY, ADMINS** Refrain from allowing users to self-register to systems, and grant permission on an as-needed basis.
+* **KY, ADMINS** Refrain from granting base permissions in a system to all users, and to large groups where user accounts are automatically assigned to.
+* **KY, SA** Avoid using shared accounts. Create dedicated accounts for each specific context, and grant the exact set of permissions required for the context in question.
 
 
 ## References

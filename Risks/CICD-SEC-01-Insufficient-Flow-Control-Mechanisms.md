@@ -15,13 +15,13 @@ An attacker with access to the SCM, CI, or systems further down the pipeline, ca
 
 
 
-* **CODE REVIEW**Push code to a repository branch, which is automatically deployed through the pipeline to production.
-* **DY**Push code to a repository branch, and then manually trigger a pipeline that ships the code to production.
-* **BRIGHT, CODE OWNER, CODE REWIW**Directly push code to a utility library, which is used by code running in a production system.
-* **CODE REVIEW**Abuse an auto-merge rule in the CI that automatically merges pull requests that meet a predefined set of requirements, thus pushing malicious unreviewed code.
-* **CODE REVIEW**Abuse insufficient branch protection rules—for example, excluding specific users or branches to bypass branch protection and push malicious unreviewed code.
-* **CODE SIGN**Upload an artifact to an artifact repository, such as a package or container, in the guise of a legitimate artifact created by the build environment. In such a scenario, a lack of controls or verifications could result in the artifact being picked up by a deploy pipeline and deployed to production.
-* **BASEPLUS**Access production and directly change application code or infrastructure (e.g AWS Lambda function), without any additional approval/verification.
+* **CODE REVIEW / **Push code to a repository branch, which is automatically deployed through the pipeline to production.
+* **DY / **Push code to a repository branch, and then manually trigger a pipeline that ships the code to production.
+* **BRIGHT, CODE OWNER, CODE REWIW / **Directly push code to a utility library, which is used by code running in a production system.
+* **CODE REVIEW / **Abuse an auto-merge rule in the CI that automatically merges pull requests that meet a predefined set of requirements, thus pushing malicious unreviewed code.
+* **CODE REVIEW / **Abuse insufficient branch protection rules—for example, excluding specific users or branches to bypass branch protection and push malicious unreviewed code.
+* **CODE SIGN / **Upload an artifact to an artifact repository, such as a package or container, in the guise of a legitimate artifact created by the build environment. In such a scenario, a lack of controls or verifications could result in the artifact being picked up by a deploy pipeline and deployed to production.
+* **BASEPLUS / **Access production and directly change application code or infrastructure (e.g AWS Lambda function), without any additional approval/verification.
 
 
 ## Recommendations
@@ -30,11 +30,11 @@ Establish pipeline flow control mechanisms to ensure that no single entity (huma
 
 
 
-* **CODE OWNER**Configure branch protection rules on branches hosting code which is used in production and other sensitive systems. Where possible, avoid exclusion of user accounts or branches from branch protection rules. Where user accounts are granted permission to push unreviewed code to a repository, ensure those accounts do not have the permission to trigger the deployment pipelines connected to the repository in question.
-* **CODE REVIEW**Limit the usage of auto-merge rules and ensure that wherever they are in use - they are applicable to the minimal amount of contexts. Review the code of all auto-merge rules thoroughly to ensure they cannot be bypassed and avoid importing 3rd party code in the auto-merge process.
-* **DY, DEVOPS**Where applicable, prevent accounts from triggering production build and deployment pipelines without additional approval or review.
-* **CHECK : SERVICE ACCOUNT**Prefer allowing artifacts to flow through the pipeline only in the condition that they were created by a pre-approved CI service account. Prevent artifacts that have been uploaded by other accounts from flowing through the pipeline without secondary review and approval.
-* **BASEPLUS**Detect and prevent drifts and inconsistencies between code running in production and its CI/CD origin, and modify any resource that contains a drift.
+* **CODE OWNER / **Configure branch protection rules on branches hosting code which is used in production and other sensitive systems. Where possible, avoid exclusion of user accounts or branches from branch protection rules. Where user accounts are granted permission to push unreviewed code to a repository, ensure those accounts do not have the permission to trigger the deployment pipelines connected to the repository in question.
+* **CODE REVIEW / **Limit the usage of auto-merge rules and ensure that wherever they are in use - they are applicable to the minimal amount of contexts. Review the code of all auto-merge rules thoroughly to ensure they cannot be bypassed and avoid importing 3rd party code in the auto-merge process.
+* **DY, DEVOPS / **Where applicable, prevent accounts from triggering production build and deployment pipelines without additional approval or review.
+* **CHECK : SERVICE ACCOUNT / **Prefer allowing artifacts to flow through the pipeline only in the condition that they were created by a pre-approved CI service account. Prevent artifacts that have been uploaded by other accounts from flowing through the pipeline without secondary review and approval.
+* **BASEPLUS / **Detect and prevent drifts and inconsistencies between code running in production and its CI/CD origin, and modify any resource that contains a drift.
 
 
 ## References
