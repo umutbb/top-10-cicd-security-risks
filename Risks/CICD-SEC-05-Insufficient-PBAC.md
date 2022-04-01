@@ -35,14 +35,14 @@ The extent of the potential damage of a scenario in which an adversary is able t
 
 
 
-* Do not use a shared node for pipelines with different levels of sensitivity / that require access to different resources. Shared nodes should be used only for pipelines with identical levels of confidentiality.
-* Ensure secrets that are used in CI/CD systems are scoped in a manner that allows each pipeline and step to have access to only the secrets it requires.
+* **ISOLATION** Do not use a shared node for pipelines with different levels of sensitivity / that require access to different resources. Shared nodes should be used only for pipelines with identical levels of confidentiality.
+* **SBOX/VAULT** Ensure secrets that are used in CI/CD systems are scoped in a manner that allows each pipeline and step to have access to only the secrets it requires.
 * Revert the execution node to its pristine state after each pipeline execution.
-* Ensure the OS user running the pipeline job has been granted OS permissions on the execution node according to the principle of least privilege.
-* CI and CD pipeline jobs should have limited permissions on the controller node. Where applicable, run pipeline jobs on a separate, dedicated node.
-* Ensure the execution node is appropriately patched.
-* Ensure network segmentation in the environment the job is running on is configured to allow the execution node to access only the resources it requires within the network. Where possible, refrain from granting unlimited access towards the internet to build nodes.
-* When installation scripts are being executed as part of the package installation, ensure that a separate context exists for those scripts, which does not have access to secrets and other sensitive resources available in other stages in the build process.
+* **PRIVILEGE, ROOT ACCOUNT*, HARDENING** Ensure the OS user running the pipeline job has been granted OS permissions on the execution node according to the principle of least privilege.
+* **PRIVELEGE, ROOT ACCOUNT, HARDENING** CI and CD pipeline jobs should have limited permissions on the controller node. Where applicable, run pipeline jobs on a separate, dedicated node.
+* **BT** Ensure the execution node is appropriately patched.
+* **ISOLATION** Ensure network segmentation in the environment the job is running on is configured to allow the execution node to access only the resources it requires within the network. Where possible, refrain from granting unlimited access towards the internet to build nodes.
+* **ISOLATION** When installation scripts are being executed as part of the package installation, ensure that a separate context exists for those scripts, which does not have access to secrets and other sensitive resources available in other stages in the build process.
 
 
 ## References
