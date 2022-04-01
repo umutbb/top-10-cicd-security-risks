@@ -33,10 +33,10 @@ A security flaw in one of the CI/CD systems may be leveraged by an adversary to 
 
 
 
-* Maintain an inventory of systems and versions in use, including mapping of a designated owner for each system. Continuously check for known vulnerabilities in these components. If a security patch is available, update the vulnerable component. If not, consider removing the component / system, or reduce the potential impact of exploiting the vulnerability by restricting access to the system, or the system’s ability to perform sensitive operations.
-* Ensure network access to the systems is aligned with the principle of least access. 
-* Establish a process to periodically review all system configurations for any setting that can have an effect on the security posture of the system, and ensure all settings are optimal.
-* Ensure permissions to the pipeline execution nodes are granted according to the principle of least privilege. A common misconfiguration in this context is around granting debug permissions on execution nodes to engineers. While in many organizations this is a common practice, it is imperative to take into consideration that any user with the ability to access the execution node in debug mode may expose all secrets while they are loaded into memory and use the node’s identity - effectively granting elevated permissions to any engineer with this permission.
+* **VM** Maintain an inventory of systems and versions in use, including mapping of a designated owner for each system. Continuously check for known vulnerabilities in these components. If a security patch is available, update the vulnerable component. If not, consider removing the component / system, or reduce the potential impact of exploiting the vulnerability by restricting access to the system, or the system’s ability to perform sensitive operations.
+* **ISOLATION** Ensure network access to the systems is aligned with the principle of least access. 
+* **1ST level, HARDENING, 2ST Level** Establish a process to periodically review all system configurations for any setting that can have an effect on the security posture of the system, and ensure all settings are optimal.
+* **RESEARCH HOW** Ensure permissions to the pipeline execution nodes are granted according to the principle of least privilege. A common misconfiguration in this context is around granting debug permissions on execution nodes to engineers. While in many organizations this is a common practice, it is imperative to take into consideration that any user with the ability to access the execution node in debug mode may expose all secrets while they are loaded into memory and use the node’s identity - effectively granting elevated permissions to any engineer with this permission.
 
 
 ## References

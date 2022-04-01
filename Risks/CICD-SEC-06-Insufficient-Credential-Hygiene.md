@@ -35,14 +35,14 @@ Credentials are the most sought-after object by adversaries, seeking to use them
 
 
 
-* Establish procedures to continuously map credentials found across the different systems in the engineering ecosystem - from code to deployment. Ensure each set of credentials follows the principle of least privilege and has been granted the exact set of permission needed by the service using it. 
-* Avoid sharing the same set of credentials across multiple contexts. This increases the complexity of achieving the principle of least privilege as well as having a negative effect on accountability. 
+* **TALISMAN** Establish procedures to continuously map credentials found across the different systems in the engineering ecosystem - from code to deployment. Ensure each set of credentials follows the principle of least privilege and has been granted the exact set of permission needed by the service using it. 
+* **KY** Avoid sharing the same set of credentials across multiple contexts. This increases the complexity of achieving the principle of least privilege as well as having a negative effect on accountability. 
 * Prefer using temporary credentials over static credentials. In case static credentials need to be in use - establish a procedure to periodically rotate all static credentials and detect stale credentials. 
-* Configure usage of credentials to be limited to predetermined conditions (like scoping to a specific source IP or identity) to ensure that even in case of compromise, exfiltrated credentials cannot be used outside your environment.
-* Detect secrets pushed to and stored on code repositories. Use controls such as an IDE plugin to identify secrets used in the local changes, automatic scanning upon each code push, and periodical scans on the repository and its past commits.
-* Ensure secrets that are used in CI/CD systems are scoped in a manner that allows each pipeline and step to have access to only the secrets it requires.
-* Use built-in vendor options or 3rd party tools to prevent secrets from being printed to console outputs of future builds. Ensure all existing outputs do not contain secrets.
-* Verify that secrets are removed from any type of artifact, such as from layers of container images, binaries, or Helm charts.
+* **SBOX IP** Configure usage of credentials to be limited to predetermined conditions (like scoping to a specific source IP or identity) to ensure that even in case of compromise, exfiltrated credentials cannot be used outside your environment.
+* **TALISMAN, FORTIFY** Detect secrets pushed to and stored on code repositories. Use controls such as an IDE plugin to identify secrets used in the local changes, automatic scanning upon each code push, and periodical scans on the repository and its past commits.
+* **SBOX** Ensure secrets that are used in CI/CD systems are scoped in a manner that allows each pipeline and step to have access to only the secrets it requires.
+* **HOW** Use built-in vendor options or 3rd party tools to prevent secrets from being printed to console outputs of future builds. Ensure all existing outputs do not contain secrets.
+* **FORTIFY, GIT SCAN** Verify that secrets are removed from any type of artifact, such as from layers of container images, binaries, or Helm charts.
 
 
 ## References

@@ -30,9 +30,9 @@ There are several elements to achieving sufficient logging and visibility:
 
 * **Mapping the environment** - Strong visibility capabilities cannot be achieved without an intimate level of familiarity with all the different systems involved in potential threats. A potential breach may involve any of the systems which take part in the CI/CD processes, including SCM, CI, Artifact repositories, package management software, container registries, CD, and orchestration engines (e.g. K8s).
 
-    Identify and build an inventory of all the systems in use within the organization, containing every instance of these systems (specifically relevant for self-managed systems e.g. Jenkins).
+    **STANDARD?? **Identify and build an inventory of all the systems in use within the organization, containing every instance of these systems (specifically relevant for self-managed systems e.g. Jenkins).
 
-* **Identifying and enabling the appropriate log sources** - Once all relevant systems are identified, the next step is ensuring that all relevant logs are enabled, as this is not the default state in the different systems. Visibility should be optimized around both human access as well as programmatic access through all the various measures it is allowed. It is important to place an equal level of emphasis on identifying all relevant audit log sources, as well as the applicative log sources. 
+* **NEED??** **Identifying and enabling the appropriate log sources** - Once all relevant systems are identified, the next step is ensuring that all relevant logs are enabled, as this is not the default state in the different systems. Visibility should be optimized around both human access as well as programmatic access through all the various measures it is allowed. It is important to place an equal level of emphasis on identifying all relevant audit log sources, as well as the applicative log sources. 
 * **Shipping logs to a centralized location** (e.g. SIEM), to support aggregation and correlation of logs between different systems for detection and investigation.
 * **Creating alerts to detect anomalies and potential malicious activity**, both in each system on its own and anomalies in the code shipping process, which involves multiple systems and requires deeper knowledge in the internal build and deployments processes.
 

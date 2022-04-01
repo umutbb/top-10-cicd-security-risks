@@ -37,7 +37,7 @@ Given the highly interconnected nature of CI/CD systems and environments, compro
 Governance controls around 3rd party services should be implemented within every stage of the 3rd party usage lifecycle:
 
 
-
+**SCA, ISOLATION, S2S VPN, AppSec, GRC, CONTROL???***
 * **Approval** - Establish vetting procedures to ensure 3rd parties granted access to resources anywhere across the engineering ecosystem are approved prior to being granted access to the environment, and that the level of permission they are granted is aligned with the principle of least privilege.
 * **Integration** - Introduce controls and procedures to maintain continuous visibility over all 3rd parties integrated to CI/CD systems, including:
     * Method of integration. Make sure all methods of integration for each system are covered (including marketplace apps, plugins, OAuth applications, programmatic access tokens, etc.).
